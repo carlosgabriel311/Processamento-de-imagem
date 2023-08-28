@@ -31,7 +31,7 @@ def isoseg(image, num_clusters, max_iterations=100):
     return segmented_image
 
 # Carregar a imagem
-image = cv2.imread('C:\\Users\\carlo\\Documents\\Processamento-de-imagem\\imagens\\train\\salad_1.png')
+image = cv2.imread('imagens\\train\\salad_1.png')
 
 # Definir o número de clusters desejado
 num_clusters = 2

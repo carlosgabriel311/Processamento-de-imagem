@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 # Carregue a imagem
-imagem = cv2.imread('C:\\Users\\carlo\\Documents\\Processamento-de-imagem\\imagens\\train\\salad_0.png')
+imagem = cv2.imread('imagens\\train\\salad_0.png')
 
 # Converta a imagem para tons de cinza
 imagem_cinza = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)

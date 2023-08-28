@@ -5,7 +5,7 @@ from sklearn.utils import shuffle
 from skimage import io
 
 # Carregar a imagem
-image = io.imread('apples\\test\\apple_100.png')
+image = io.imread('imagens\\test\\apple_100.png')
 
 # Transformar a imagem em um array de pixels
 image = np.array(image, dtype=np.float64) / 255
