@@ -1,5 +1,6 @@
 import cv2
 from tensorflow import keras
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, jaccard_score
 import matplotlib.pyplot as plt
 from pre_processamento.load_images_and_mask import load_images_and_masks
 from pos_processamento.pos_processamento_mascara import pos_processamento_mascara
@@ -17,8 +18,22 @@ def test_fcn():
     saved_model_path = 'fcn'
     loaded_model = keras.models.load_model(saved_model_path)
     y_pred = loaded_model.predict(x_test)
+    y_pred_thresholded = (y_pred > 0.5).astype(int)
+    # Calcular as métricas
+    accuracy = accuracy_score(y_test.flatten(), y_pred_thresholded.flatten())
+    precision = precision_score(y_test.flatten(), y_pred_thresholded.flatten())
+    recall = recall_score(y_test.flatten(), y_pred_thresholded.flatten())
+    f1 = f1_score(y_test.flatten(), y_pred_thresholded.flatten())
+    iou = jaccard_score(y_test.flatten(), y_pred_thresholded.flatten())
 
-    index = 10  # Índice da imagem de teste
+# Imprimir as métricas
+    print(f"Accuracy: {accuracy:.4f}")
+    print(f"Precision: {precision:.4f}")
+    print(f"Recall: {recall:.4f}")
+    print(f"F1-Score: {f1:.4f}")
+    print(f"IoU: {iou:.4f}")
+
+    index = 26  # Índice da imagem de teste
     mask = pos_processamento_mascara(y_pred[index])
     plt.figure(figsize=(12, 6))
     plt.subplot(131)

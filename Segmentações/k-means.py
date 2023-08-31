@@ -1,3 +1,4 @@
+import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
@@ -33,16 +34,9 @@ cluster_centers = kmeans.cluster_centers_
 segmented_image = cluster_centers[labels].reshape(w, h, d)
 
 # Mostrar a imagem original e a imagem segmentada
-plt.figure(figsize=(10, 5))
 
-plt.subplot(1, 2, 1)
-plt.title("Imagem Original")
-plt.imshow(image)
-plt.axis('off')
 
-plt.subplot(1, 2, 2)
-plt.title("Imagem Segmentada")
-plt.imshow(segmented_image)
-plt.axis('off')
+cv2.imshow('Imagem Segmentada', segmented_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 
-plt.show()
